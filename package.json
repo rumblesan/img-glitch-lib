@@ -1,0 +1,34 @@
+{
+  "name": "glitchlib-js",
+  "version": "0.1.0",
+  "description": "A js library for glitching images",
+  "main": "lib/library.js",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/rumblesan/glitchlib-js/issues"
+  },
+  "repository": "rumblesan/glitchlib-js",
+  "scripts": {
+    "build": "webpack --env build",
+    "dev": "webpack --progress --colors --watch --env dev",
+    "test": "mocha-webpack --webpack-config webpack.config.js \"tests/**/*.spec.js\"",
+    "posttest": "npm run lint",
+    "lint": "eslint .",
+    "test:watch": "mocha-webpack --webpack-config webpack.config.js -w \"tests/**/*.spec.js\"",
+    "prettier": "prettier --single-quote --trailing-comma es5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.3.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "mocha": "^3.1.2",
+    "mocha-webpack": "^0.7.0",
+    "prettier": "^1.5.3",
+    "webpack": "^2.7.0"
+  }
+}
