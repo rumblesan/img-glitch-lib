@@ -5,9 +5,10 @@ const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
 
-let libraryName = 'glitchlibjs';
+let libraryName = 'glitchlib';
 
-let plugins = [], outputFile;
+let plugins = [],
+  outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
@@ -24,26 +25,26 @@ const config = {
     filename: outputFile,
     library: libraryName,
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
-      { test: /\.pegjs$/, loader: 'pegjs-loader' }
-    ]
+      { test: /\.pegjs$/, loader: 'pegjs-loader' },
+    ],
   },
   resolveLoader: {
-    modules: ['./webpack', './node_modules']
+    modules: ['./webpack', './node_modules'],
   },
   resolve: {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js', '.pegjs']
+    extensions: ['.json', '.js', '.pegjs'],
   },
-  plugins: plugins
+  plugins: plugins,
 };
 
 module.exports = config;
