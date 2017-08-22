@@ -25,34 +25,17 @@
 
       img1.src = 'testcard.jpg';
 
-      function fileToUint8(event) {
-        var imgdata = new Uint8Array(event.target.result);
-        var sections = glitchlib.decodeJpeg(imgdata);
-        var data = {
-          imgdata: imgdata,
-          sections: sections
-        }
-        window.data = data;
-      }
-
       function parseCanvas() {
-        canvas.toBlob(function (blob) {
-          var r = new FileReader();
-
-          r.onload = fileToUint8;
-
-          r.readAsArrayBuffer(blob);
-        }, 'image/jpeg', 0.95);
+        glitchlib.utils.jpegFromCanvas(canvas, function (jpeg) {
+          window.jpeg = jpeg;
+        });
       }
 
-      function loadGlitchedImage() {
-        var objurl = window.URL.createObjectURL(new Blob([window.data.imgdata], {type: 'image/jpeg'}));
-        var glitchedImg = new Image();
-        glitchedImg.src = objurl;
-        glitchedImg.onload = function () {
-          console.log('image loading');
-          ctx.drawImage(glitchedImg, 0, 0);
-        }
+      function loadGlitchedImage(jpeg) {
+        glitchlib.utils.imageFromJpeg(jpeg, function (img) {
+          console.log('drawing image');
+          ctx.drawImage(img, 0, 0);
+        });
       }
 
     </script>
