@@ -13,3 +13,7 @@ export function copy({ data }) {
   // may or may not be a bad idea
   return Jpeg(data.subarray());
 }
+
+export function getSections(sectionName, jpeg) {
+  return jpeg.sections.filter(({ section }) => section === sectionName);
+}
