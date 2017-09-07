@@ -2,7 +2,7 @@
   "name": "glitchlib-js",
   "version": "0.1.0",
   "description": "A js library for glitching images",
-  "main": "lib/library.js",
+  "main": "lib/glitchlib.js",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/rumblesan/glitchlib-js/issues"
