@@ -9,7 +9,7 @@
   },
   "repository": "rumblesan/glitchlib-js",
   "scripts": {
-    "build": "webpack --env build",
+    "build": "webpack && webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "mocha-webpack --webpack-config webpack.config.js \"tests/**/*.spec.js\"",
     "posttest": "npm run lint",
