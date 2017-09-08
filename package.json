@@ -1,5 +1,5 @@
 {
-  "name": "glitchlib-js",
+  "name": "glitchlib",
   "version": "0.1.0",
   "description": "A js library for glitching images",
   "main": "lib/glitchlib.js",
