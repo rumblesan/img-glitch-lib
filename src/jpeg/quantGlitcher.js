@@ -1,14 +1,18 @@
 import { getSections } from './index';
 import { DQT } from './sections';
 
+import seedrandom from 'seedrandom';
+
 export function glitchQuantisationTable(jpeg, section, opts = {}) {
-  let p;
-  let g;
+  const rng = seedrandom(opts.seed, { entropy: !opts.seed });
   const depth = opts.depth || 0.1;
-  for (p = section.position + 2; p < section.position + section.size; p += 1) {
-    if (Math.random() < depth) {
-      g = Math.floor(Math.random() * 253 + 1);
-      jpeg.data[p] = g;
+  for (
+    let p = section.position + 2;
+    p < section.position + section.size;
+    p += 1
+  ) {
+    if (rng() < depth) {
+      jpeg.data[p] = Math.floor(rng() * 253 + 1);
     }
   }
 }
