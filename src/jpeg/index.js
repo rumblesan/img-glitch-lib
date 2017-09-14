@@ -11,7 +11,7 @@ export function Jpeg(data) {
 export function copy({ data }) {
   // results in reparsing the new jpeg
   // may or may not be a bad idea
-  return Jpeg(data.subarray());
+  return Jpeg(data.slice());
 }
 
 export function getSections(sectionName, jpeg) {
