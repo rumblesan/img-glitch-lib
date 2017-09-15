@@ -33,14 +33,19 @@
 
       function loadGlitchedImage(jpeg) {
         glitchlib.utils.imageFromJpeg(jpeg, function (img) {
-          console.log('drawing image');
           ctx.drawImage(img, 0, 0);
         });
       }
 
       function glitch() {
-        glitchlib.randomQuantGlitch(window.jpeg);
-        loadGlitchedImage(window.jpeg);
+        var newimg = glitchlib.randomQuantGlitch(window.jpeg);
+        loadGlitchedImage(newimg);
+      }
+
+      function fullGlitch() {
+        glitchlib.utils.jpegFromCanvas(canvas, function (jpeg) {
+          loadGlitchedImage(glitchlib.randomQuantGlitch(jpeg));
+        });
       }
 
     </script>

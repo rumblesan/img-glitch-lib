@@ -1,5 +1,6 @@
 import { getSections } from './index';
 import { DQT } from './sections';
+import { copy as jpegCopy } from 'jpeg';
 
 import seedrandom from 'seedrandom';
 
@@ -18,16 +19,22 @@ export function glitchQuantisationTable(jpeg, section, opts = {}) {
 }
 
 export function randomQuantGlitch(jpeg) {
-  getSections(DQT.name, jpeg).map(s => glitchQuantisationTable(jpeg, s));
+  const glitchedJpeg = jpegCopy(jpeg);
+  getSections(DQT.name, glitchedJpeg).forEach(s =>
+    glitchQuantisationTable(glitchedJpeg, s)
+  );
+  return glitchedJpeg;
 }
 
 export function quantGlitch(jpeg, opts) {
-  getSections(DQT.name, jpeg)
+  const glitchedJpeg = jpegCopy(jpeg);
+  getSections(DQT.name, glitchedJpeg)
     .filter((qt, idx) => {
       if (!opts || !opts.quantTable) {
         return true;
       }
       return idx === opts.quantTable;
     })
-    .map(s => glitchQuantisationTable(jpeg, s, opts));
+    .forEach(s => glitchQuantisationTable(glitchedJpeg, s, opts));
+  return glitchedJpeg;
 }
