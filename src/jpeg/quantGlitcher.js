@@ -30,7 +30,7 @@ export function quantGlitch(jpeg, opts) {
   const glitchedJpeg = jpegCopy(jpeg);
   getSections(DQT.name, glitchedJpeg)
     .filter((qt, idx) => {
-      if (!opts || !opts.quantTable) {
+      if (!opts || !opts.quantTable || opts.quantTable === 'all') {
         return true;
       }
       return idx === opts.quantTable;
