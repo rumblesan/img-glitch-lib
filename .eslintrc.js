@@ -3,7 +3,6 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true,
   },
   plugins: ['prettier'],
   extends: ['eslint:recommended', 'prettier'],
@@ -13,7 +12,6 @@ module.exports = {
   rules: {
     indent: [2, 2, { SwitchCase: 1, VariableDeclarator: 1 }],
     'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single', { avoidEscape: true }],
     semi: ['error', 'always'],
   },
 };
