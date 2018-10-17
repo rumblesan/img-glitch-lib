@@ -1,5 +1,5 @@
 {
-  "name": "glitchlib",
+  "name": "@rumblesan/glitchlib",
   "version": "0.1.0",
   "description": "A js library for glitching images",
   "main": "lib/glitchlib.js",
@@ -9,13 +9,14 @@
   },
   "repository": "rumblesan/glitchlib-js",
   "scripts": {
+    "lint": "eslint src",
     "build": "webpack-cli --mode production",
     "build:dev": "webpack-cli --mode development",
-    "dev": "webpack --progress --colors --watch --env dev",
-    "test": "mocha-webpack --webpack-config webpack.config.js \"tests/**/*.spec.js\"",
+    "dev": "webpack-cli --progress --colors --watch --mode development",
+    "test": "jest test",
     "posttest": "npm run lint",
-    "lint": "eslint .",
-    "test:watch": "mocha-webpack --webpack-config webpack.config.js -w \"tests/**/*.spec.js\""
+    "test:watch": "jest test --watch",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
@@ -28,11 +29,15 @@
     "eslint": "5.6.0",
     "eslint-config-prettier": "3.0.1",
     "eslint-plugin-prettier": "2.4.0",
-    "mocha": "5.2.0",
-    "mocha-webpack": "2.0.0-beta.0",
+    "jest": "23.6.0",
     "prettier": "1.10.2"
   },
   "dependencies": {
     "seedrandom": "2.4.4"
+  },
+  "jest": {
+    "modulePaths": [
+      "src"
+    ]
   }
 }
