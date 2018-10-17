@@ -9,29 +9,30 @@
   },
   "repository": "rumblesan/glitchlib-js",
   "scripts": {
-    "build": "webpack && webpack --env build",
+    "build": "webpack-cli --mode production",
+    "build:dev": "webpack-cli --mode development",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "mocha-webpack --webpack-config webpack.config.js \"tests/**/*.spec.js\"",
     "posttest": "npm run lint",
     "lint": "eslint .",
-    "test:watch": "mocha-webpack --webpack-config webpack.config.js -w \"tests/**/*.spec.js\"",
-    "prettier": "prettier"
+    "test:watch": "mocha-webpack --webpack-config webpack.config.js -w \"tests/**/*.spec.js\""
   },
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.2",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "eslint": "^4.6.1",
-    "eslint-config-prettier": "^2.4.0",
-    "eslint-plugin-prettier": "^2.1.2",
-    "mocha": "^3.5.3",
-    "mocha-webpack": "^0.7.0",
-    "prettier": "^1.7.0",
-    "webpack": "^2.7.0"
+    "@babel/core": "7.1.2",
+    "@babel/polyfill": "7.0.0",
+    "@babel/preset-env": "7.1.0",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "8.0.4",
+    "webpack": "4.20.2",
+    "webpack-cli": "3.1.1",
+    "eslint": "5.6.0",
+    "eslint-config-prettier": "3.0.1",
+    "eslint-plugin-prettier": "2.4.0",
+    "mocha": "5.2.0",
+    "mocha-webpack": "2.0.0-beta.0",
+    "prettier": "1.10.2"
   },
   "dependencies": {
-    "seedrandom": "^2.4.3"
+    "seedrandom": "2.4.4"
   }
 }
